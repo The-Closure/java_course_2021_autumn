@@ -22,6 +22,10 @@ public class User {
         this.auth = auth;
     }
 
+    public int calcBirthYear(){
+        int result = 2021 - age;
+        return result;
+    }
 
 
 }
