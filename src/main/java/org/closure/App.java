@@ -7,6 +7,7 @@ package org.closure;
 public class App {
 
   public static void checkAge(int i) throws Exception {
+    
     if (i > 18 && i < 42) {
       throw new Exception("our army is waiting you");
     }
