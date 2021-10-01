@@ -25,9 +25,16 @@ public class App {
    u.a = 10;
    User u1 = new User("username", "pass",22);
    System.out.println(u1.a);
-
+    
+   Emp manager = new Emp("java","P@ssw0rd",30,Roles.MANAGER);
+   manager.getRole();
    User.test();
 
+   Report<Emp> empReport = new Report<>();
+   empReport.setRequiredObject(manager);
+   empReport.printReport();
+
+   
 
   }
 }

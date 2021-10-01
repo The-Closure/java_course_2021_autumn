@@ -1,6 +1,6 @@
 package org.closure;
 
-public class Triangle extends Shape{
+public class Triangle implements Shape{
 
     @Override
     public void draw() {

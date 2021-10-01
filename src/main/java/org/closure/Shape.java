@@ -1,5 +1,5 @@
 package org.closure;
 
-public abstract class Shape {
-    public abstract void draw();
+public interface Shape {
+    public void draw();
 }
