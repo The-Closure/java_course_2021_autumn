@@ -1,40 +1,21 @@
 package org.closure;
 
-import java.io.File;
-
-import com.google.gson.Gson;
-
-/**
- * Hello world!
- *
- */
 public class App {
+    public static void drawShape(Shape shape){
+        shape.draw();
+    }
+    public static void main(String[] args) {
+        Shape circle = new Cricle(5, 15, 5);
+        drawShape(circle);
+        Shape triangle = new Triangle(10, 5);
+        drawShape(triangle);
 
-  public static void drawShape(Shape s){
-    s.draw();
-  }
-  
-  public static void main(String[] args) {
-   Shape circle = new Circle(); //upcast
-   Circle c = (Circle) circle; //downcast
-   drawShape(circle);
+        SingleObject singleObject = SingleObject.getInstance();
+        singleObject.getMessage();
+
+        SingleObject singleObject2 = SingleObject.getInstance();
+        singleObject2.getMessage();
+        
+    }
     
-   System.out.println(User.a); //valid access
-
-   User u = new User("name", "password", 12);
-   u.a = 10;
-   User u1 = new User("username", "pass",22);
-   System.out.println(u1.a);
-    
-   Emp manager = new Emp("java","P@ssw0rd",30,Roles.MANAGER);
-   manager.getRole();
-   User.test();
-
-   Report<Emp> empReport = new Report<>();
-   empReport.setRequiredObject(manager);
-   empReport.printReport();
-
-   
-
-  }
 }
