@@ -10,18 +10,24 @@ public class App {
     public static void main(String[] args) {
         int rows = 0;
         boolean state = false;
+        Connection conn = null;
         try {
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            Statement stat = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = stat.executeQuery("SELECT * FROM user");
-            while (rs.next()) {
-                System.out.println(rs.getString("password"));
-                while (rs.previous()) {
-                    System.out.println(rs.getString("password"));
-                }
-            }
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            conn.setAutoCommit(false);
+            Statement stat = conn.createStatement();
+            stat.executeUpdate("INSERT INTO user (is_active,password,roles,user_name) VALUES (1,'pass','role','name')");
+            stat.executeUpdate("INSERT INTO user VALUES ('pass','role','name')");
+            conn.commit();
 
         } catch (SQLException e) {
+            if(conn != null)
+            {
+                try {
+                    conn.rollback();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
             e.printStackTrace();
         }
     }
